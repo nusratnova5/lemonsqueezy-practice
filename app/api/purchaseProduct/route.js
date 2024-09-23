@@ -4,9 +4,10 @@ export const dynamic = "force-dynamic";
 
 export async function POST(req) {
     try {
+        console.log("process.env.LEMON_SQUEEZY_API_KEY", process.env.LEMON_SQUEEZY_API_KEY)
         const reqData = await req.json();
 
-        if (!reqData.productId)
+        if (!reqData.variantId)
             return Response.json({ message: "productid is required" }, { status: 400 });
 
         const response = await lemonSqueezyApiInstance.post("/checkouts", {
@@ -30,7 +31,7 @@ export async function POST(req) {
                     variant: {
                         data: {
                             type: "variants",
-                            id: reqData.productId.toString(),
+                            id: reqData.variantId.toString(),
                         },
                     },
                 },
@@ -40,8 +41,7 @@ export async function POST(req) {
         return Response.json({checkoutUrl});
     }
     catch (error) {
-        console.error(error);
-        Response.json({ message: "An error occured" }, { status: 500 });
+        return Response.json(error, { status: 500 });
 
     }
 }

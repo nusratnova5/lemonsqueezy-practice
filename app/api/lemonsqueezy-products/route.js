@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
     try {
-        const response = await lemonSqueezyApiInstance.get("/products");
+        const response = await lemonSqueezyApiInstance.get(`/products`);
         return Response.json(response.data);
     }
     catch (error) {
