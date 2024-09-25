@@ -7,7 +7,6 @@ const dbObj = {
     password: process.env.DB_PASSWORD,
     port: process.env.PORT_NUMBER,
 }
-console.log(dbObj);
 
 export const pool = new Pool(dbObj)
 

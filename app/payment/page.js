@@ -63,7 +63,9 @@ export default function payment() {
           })
         }
       </div>
-      <TransactionTable/>
+
+
+      <TransactionTable />
     </div>
   )
 }
